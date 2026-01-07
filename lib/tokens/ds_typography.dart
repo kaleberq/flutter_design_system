@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-
-/// Fonte primária do design system
-class _TypographyFonts {
-  _TypographyFonts._();
-
-  /// Fonte primária padrão (pode ser customizada)
-  static const String primaryFont = 'Roboto';
-}
+import 'package:google_fonts/google_fonts.dart';
 
 /// Tamanhos de fonte do design system
 class _TypographySizes {
@@ -31,11 +24,7 @@ class _TypographySizes {
 
 /// Helper privado para criar TextStyles
 TextStyle _createTextStyle(double fontSize, FontWeight fontWeight) {
-  return TextStyle(
-    fontFamily: _TypographyFonts.primaryFont,
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-  );
+  return GoogleFonts.montserrat(fontSize: fontSize, fontWeight: fontWeight);
 }
 
 /// Tipografia Regular
