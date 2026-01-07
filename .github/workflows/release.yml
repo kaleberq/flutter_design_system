@@ -7,155 +7,69 @@ on:
       - main
 
 jobs:
-  create-version-pr:
-    if: |
-      github.event.pull_request.merged == true &&
-      !startsWith(github.event.pull_request.head.ref, 'chore/version-')
+  create-release:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          dart-version: "3.9.2"
 
       - name: Get version from pubspec.yaml
         id: get_version
         run: |
           VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Version found: $VERSION"
 
       - name: Find available version
         id: find_version
         run: |
           VERSION="${{ steps.get_version.outputs.version }}"
-
-          # Split version into parts
           IFS='.' read -r -a PARTS <<< "$VERSION"
           MAJOR="${PARTS[0]}"
           MINOR="${PARTS[1]}"
           PATCH="${PARTS[2]}"
 
-          # Find first available version
           while true; do
             TEST_VERSION="$MAJOR.$MINOR.$PATCH"
             TEST_TAG="v$TEST_VERSION"
             
-            # Check if tag exists using GitHub API
             RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
               -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TEST_TAG" 2>/dev/null)
             
             if [ "$RESPONSE" != "200" ]; then
               echo "release_version=$TEST_VERSION" >> $GITHUB_OUTPUT
-              echo "Found available version: $TEST_VERSION"
               break
             fi
             
-            echo "Version $TEST_VERSION already exists, trying next..."
             PATCH=$((PATCH + 1))
           done
 
-      - name: Check if version PR already exists
-        id: check_pr
+      - name: Update pubspec.yaml and commit
+        if: steps.find_version.outputs.release_version != steps.get_version.outputs.version
         run: |
-          BRANCH_NAME="chore/version-${{ steps.find_version.outputs.release_version }}"
-          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Version PR branch already exists"
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-            echo "Version PR branch does not exist"
-          fi
-
-      - name: Create version branch and update pubspec.yaml
-        if: steps.check_pr.outputs.exists == 'false'
-        run: |
-          NEW_VERSION="${{ steps.find_version.outputs.release_version }}"
-          BRANCH_NAME="chore/version-$NEW_VERSION"
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH_NAME"
-
-          sed -i "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
-          echo "Updated pubspec.yaml to version $NEW_VERSION"
-
+          sed -i "s/^version: .*/version: ${{ steps.find_version.outputs.release_version }}/" pubspec.yaml
           git add pubspec.yaml
-          git commit -m "chore: bump version to $NEW_VERSION"
-          git push origin "$BRANCH_NAME"
-
-      - name: Create Pull Request
-        if: steps.check_pr.outputs.exists == 'false'
-        run: |
-          BRANCH_NAME="chore/version-${{ steps.find_version.outputs.release_version }}"
-          VERSION="${{ steps.find_version.outputs.release_version }}"
-          REPO="${{ github.repository }}"
-
-          PR_BODY="## Release v$VERSION
-
-          This PR will create a new release when merged.
-
-          See [CHANGELOG.md](https://github.com/$REPO/blob/main/CHANGELOG.md) for details."
-
-          # Escape JSON
-          PR_BODY_ESCAPED=$(echo "$PR_BODY" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
-
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Content-Type: application/json" \
-            "https://api.github.com/repos/$REPO/pulls" \
-            -d "{\"title\":\"🚀 Release v$VERSION\",\"head\":\"$BRANCH_NAME\",\"base\":\"main\",\"body\":\"$PR_BODY_ESCAPED\"}"
-
-  create-release:
-    if: |
-      github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.head.ref, 'chore/version-')
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          dart-version: "3.9.2"
-
-      - name: Get version from pubspec.yaml
-        id: get_version
-        run: |
-          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Version found: $VERSION"
+          git commit -m "chore: bump version to ${{ steps.find_version.outputs.release_version }} [skip ci]"
+          git push origin main
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.get_version.outputs.version }}
-          name: v${{ steps.get_version.outputs.version }}
+          tag_name: v${{ steps.find_version.outputs.release_version }}
+          name: v${{ steps.find_version.outputs.release_version }}
           body: |
             ## Changes in this release
 
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
 
-            **Version:** ${{ steps.get_version.outputs.version }}
-          draft: false
-          prerelease: false
+            **Version:** ${{ steps.find_version.outputs.release_version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
