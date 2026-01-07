@@ -13,18 +13,12 @@ class _TypographySizes {
   _TypographySizes._();
 
   // Tamanhos únicos
-  static const double _size32 = 32;
-  static const double _size22 = 22;
-  static const double _size16 = 16;
-  static const double _size14 = 14;
-  static const double _size12 = 12;
 
-  // Title
-  static const double labelXLarge = _size32;
-  static const double labelLarge = _size22;
-  static const double labelMedium = _size16;
-  static const double labelSmall = _size14;
-  static const double labelXSmall = _size12;
+  static const double labelXLarge = 32;
+  static const double labelLarge = 22;
+  static const double labelMedium = 16;
+  static const double labelSmall = 14;
+  static const double labelXSmall = 12;
 }
 
 /// Helper privado para criar TextStyles
