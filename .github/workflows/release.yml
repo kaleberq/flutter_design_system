@@ -31,16 +31,33 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version found: $VERSION"
 
+      - name: Fetch all tags
+        run: git fetch --tags --force
+
       - name: Check if tag exists
         id: check_tag
         run: |
           VERSION="${{ steps.get_version.outputs.version }}"
-          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+          TAG_NAME="v$VERSION"
+
+          # Check locally first
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Tag v$VERSION already exists"
+            echo "Tag $TAG_NAME already exists locally"
+            exit 0
+          fi
+
+          # Check remotely using GitHub API
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/git/refs/tags/$TAG_NAME")
+
+          if [ "$RESPONSE" = "200" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Tag $TAG_NAME already exists remotely"
           else
             echo "exists=false" >> $GITHUB_OUTPUT
-            echo "Tag v$VERSION does not exist"
+            echo "Tag $TAG_NAME does not exist, will create release"
           fi
 
       - name: Create Release
