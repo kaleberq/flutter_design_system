@@ -69,7 +69,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.find_version.outputs.release_version }}
-          name: Release v${{ steps.find_version.outputs.release_version }}
+          name: v${{ steps.find_version.outputs.release_version }}
           body: |
             ## Changes in this release
 
