@@ -1,12 +1,16 @@
-name: Create Release
+name: Release Workflow
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - main
 
 jobs:
-  release:
+  create-version-pr:
+    if: |
+      github.event.pull_request.merged == true &&
+      !startsWith(github.event.pull_request.head.ref, 'chore/version-')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -30,9 +34,6 @@ jobs:
           VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version found: $VERSION"
-
-      - name: Fetch all tags
-        run: git fetch --tags --force
 
       - name: Find available version
         id: find_version
@@ -65,30 +66,87 @@ jobs:
             PATCH=$((PATCH + 1))
           done
 
-      - name: Update pubspec.yaml with new version
-        if: steps.find_version.outputs.release_version != steps.get_version.outputs.version
+      - name: Check if version PR already exists
+        id: check_pr
+        run: |
+          BRANCH_NAME="chore/version-${{ steps.find_version.outputs.release_version }}"
+          if git ls-remote --heads origin "$BRANCH_NAME" | grep -q "$BRANCH_NAME"; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Version PR branch already exists"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Version PR branch does not exist"
+          fi
+
+      - name: Create version branch and update pubspec.yaml
+        if: steps.check_pr.outputs.exists == 'false'
         run: |
           NEW_VERSION="${{ steps.find_version.outputs.release_version }}"
-          sed -i "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
-          echo "Updated pubspec.yaml to version $NEW_VERSION"
+          BRANCH_NAME="chore/version-$NEW_VERSION"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH_NAME"
+
+          sed -i "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
+          echo "Updated pubspec.yaml to version $NEW_VERSION"
+
           git add pubspec.yaml
-          git commit -m "chore: bump version to $NEW_VERSION [skip ci]" || exit 0
-          git push origin main || echo "Nothing to push or push failed"
+          git commit -m "chore: bump version to $NEW_VERSION"
+          git push origin "$BRANCH_NAME"
+
+      - name: Create Pull Request
+        if: steps.check_pr.outputs.exists == 'false'
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "chore/version-${{ steps.find_version.outputs.release_version }}"
+          destination_branch: "main"
+          pr_title: "🚀 Release v${{ steps.find_version.outputs.release_version }}"
+          pr_body: |
+            ## Release v${{ steps.find_version.outputs.release_version }}
+
+            This PR will create a new release when merged.
+
+            See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  create-release:
+    if: |
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'chore/version-')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          dart-version: "3.9.2"
+
+      - name: Get version from pubspec.yaml
+        id: get_version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version found: $VERSION"
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.find_version.outputs.release_version }}
-          name: v${{ steps.find_version.outputs.release_version }}
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: v${{ steps.get_version.outputs.version }}
           body: |
             ## Changes in this release
 
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
 
-            **Version:** ${{ steps.find_version.outputs.release_version }}
+            **Version:** ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
         env:
