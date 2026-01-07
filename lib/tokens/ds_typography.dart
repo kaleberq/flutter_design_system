@@ -13,20 +13,18 @@ class _TypographySizes {
   _TypographySizes._();
 
   // Tamanhos únicos
+  static const double _size32 = 32;
   static const double _size22 = 22;
   static const double _size16 = 16;
   static const double _size14 = 14;
   static const double _size12 = 12;
 
   // Title
-  static const double titleLarge = _size22;
-  static const double titleMedium = _size16;
-  static const double titleSmall = _size14;
-
-  // Body
-  static const double bodyLarge = _size16;
-  static const double bodyMedium = _size14;
-  static const double bodySmall = _size12;
+  static const double labelXLarge = _size32;
+  static const double labelLarge = _size22;
+  static const double labelMedium = _size16;
+  static const double labelSmall = _size14;
+  static const double labelXSmall = _size12;
 }
 
 /// Helper privado para criar TextStyles
@@ -43,60 +41,46 @@ class DSTypographyRegular {
   DSTypographyRegular._();
 
   // Title
-  static TextStyle get titleLarge =>
-      _createTextStyle(_TypographySizes.titleLarge, FontWeight.w400);
-  static TextStyle get titleMedium =>
-      _createTextStyle(_TypographySizes.titleMedium, FontWeight.w400);
-  static TextStyle get titleSmall =>
-      _createTextStyle(_TypographySizes.titleSmall, FontWeight.w400);
-
-  // Body
-  static TextStyle get bodyLarge =>
-      _createTextStyle(_TypographySizes.bodyLarge, FontWeight.w400);
-  static TextStyle get bodyMedium =>
-      _createTextStyle(_TypographySizes.bodyMedium, FontWeight.w400);
-  static TextStyle get bodySmall =>
-      _createTextStyle(_TypographySizes.bodySmall, FontWeight.w400);
+  static TextStyle get labelXLarge =>
+      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w400);
+  static TextStyle get labelLarge =>
+      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w400);
+  static TextStyle get labelMedium =>
+      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w400);
+  static TextStyle get labelSmall =>
+      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w400);
+  static TextStyle get labelXSmall =>
+      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w400);
 }
 
 /// Tipografia Medium
 class DSTypographyMedium {
   DSTypographyMedium._();
 
-  // Title
-  static TextStyle get titleLarge =>
-      _createTextStyle(_TypographySizes.titleLarge, FontWeight.w500);
-  static TextStyle get titleMedium =>
-      _createTextStyle(_TypographySizes.titleMedium, FontWeight.w500);
-  static TextStyle get titleSmall =>
-      _createTextStyle(_TypographySizes.titleSmall, FontWeight.w500);
-
-  // Body
-  static TextStyle get bodyLarge =>
-      _createTextStyle(_TypographySizes.bodyLarge, FontWeight.w500);
-  static TextStyle get bodyMedium =>
-      _createTextStyle(_TypographySizes.bodyMedium, FontWeight.w500);
-  static TextStyle get bodySmall =>
-      _createTextStyle(_TypographySizes.bodySmall, FontWeight.w500);
+  static TextStyle get labelXLarge =>
+      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w500);
+  static TextStyle get labelLarge =>
+      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w500);
+  static TextStyle get labelMedium =>
+      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w500);
+  static TextStyle get labelSmall =>
+      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w500);
+  static TextStyle get labelXSmall =>
+      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w500);
 }
 
 /// Tipografia SemiBold
 class DSTypographySemiBold {
   DSTypographySemiBold._();
 
-  // Title
-  static TextStyle get titleLarge =>
-      _createTextStyle(_TypographySizes.titleLarge, FontWeight.w600);
-  static TextStyle get titleMedium =>
-      _createTextStyle(_TypographySizes.titleMedium, FontWeight.w600);
-  static TextStyle get titleSmall =>
-      _createTextStyle(_TypographySizes.titleSmall, FontWeight.w600);
-
-  // Body
-  static TextStyle get bodyLarge =>
-      _createTextStyle(_TypographySizes.bodyLarge, FontWeight.w600);
-  static TextStyle get bodyMedium =>
-      _createTextStyle(_TypographySizes.bodyMedium, FontWeight.w600);
-  static TextStyle get bodySmall =>
-      _createTextStyle(_TypographySizes.bodySmall, FontWeight.w600);
+  static TextStyle get labelXLarge =>
+      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w600);
+  static TextStyle get labelLarge =>
+      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w600);
+  static TextStyle get labelMedium =>
+      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w600);
+  static TextStyle get labelSmall =>
+      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w600);
+  static TextStyle get labelXSmall =>
+      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w600);
 }
