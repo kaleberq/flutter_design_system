@@ -88,9 +88,7 @@ jobs:
 
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
 
-            ### Version: ${{ steps.find_version.outputs.release_version }}
-
-            Original version in pubspec.yaml: ${{ steps.get_version.outputs.version }}
+            **Version:** ${{ steps.find_version.outputs.release_version }}
           draft: false
           prerelease: false
         env:
