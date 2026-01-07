@@ -39,8 +39,8 @@ TextStyle _createTextStyle(double fontSize, FontWeight fontWeight) {
 }
 
 /// Tipografia Regular
-class TypographyRegular {
-  TypographyRegular._();
+class DSTypographyRegular {
+  DSTypographyRegular._();
 
   // Title
   static TextStyle get titleLarge =>
@@ -60,8 +60,8 @@ class TypographyRegular {
 }
 
 /// Tipografia Medium
-class TypographyMedium {
-  TypographyMedium._();
+class DSTypographyMedium {
+  DSTypographyMedium._();
 
   // Title
   static TextStyle get titleLarge =>
@@ -81,8 +81,8 @@ class TypographyMedium {
 }
 
 /// Tipografia SemiBold
-class TypographySemiBold {
-  TypographySemiBold._();
+class DSTypographySemiBold {
+  DSTypographySemiBold._();
 
   // Title
   static TextStyle get titleLarge =>

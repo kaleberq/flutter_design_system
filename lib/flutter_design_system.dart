@@ -1,4 +1,4 @@
-export 'tokens/spacing.dart';
-export 'tokens/typography.dart';
-export 'tokens/colors.dart';
-export 'tokens/radius.dart';
+export 'tokens/ds_spacing.dart';
+export 'tokens/ds_typography.dart';
+export 'tokens/ds_colors.dart';
+export 'tokens/ds_radius.dart';

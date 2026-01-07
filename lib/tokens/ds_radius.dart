@@ -2,8 +2,8 @@
 ///
 /// Define valores padronizados de border radius para uso consistente
 /// em todo o design system.
-class Radius {
-  Radius._();
+class DSRadius {
+  DSRadius._();
 
   /// Raio extra pequeno: 4.0
   static const double xs = 4.0;

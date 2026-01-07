@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Cores do design system
-class DesignSystemColors {
-  DesignSystemColors._();
+class DSColors {
+  DSColors._();
 
   /// Primary
   static const Color primary = Color(0xFF6200EE);
