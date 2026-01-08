@@ -8,10 +8,10 @@ class DSTheme {
   /// Theme claro
   static ThemeData light() {
     return ThemeData(
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       colorScheme: ColorScheme(
         /// Define o brilho geral do esquema de cores
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
 
         /// Cor primária do tema, usada para elementos principais e interativos
         primary: DSColors.primary,
@@ -45,10 +45,10 @@ class DSTheme {
   /// Theme escuro
   static ThemeData dark() {
     return ThemeData(
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
       colorScheme: ColorScheme(
         /// Define o brilho geral do esquema de cores
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
 
         /// Cor primária do tema, usada para elementos principais e interativos
         primary: DSColors.primary,
