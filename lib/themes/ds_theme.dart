@@ -14,30 +14,30 @@ class DSTheme {
         brightness: Brightness.light,
 
         /// Cor primária do tema, usada para elementos principais e interativos
-        primary: DSColors.primary,
+        primary: DSColors.primaryLight,
 
         /// Cor do texto e ícones que aparecem sobre a cor primária
-        onPrimary: DSColors.primary,
+        onPrimary: DSColors.onPrimary,
 
         /// Cor secundária do tema, usada para elementos de destaque alternativos
-        secondary: DSColors.secondary,
+        secondary: DSColors.secondaryLight,
 
         /// Cor do texto e ícones que aparecem sobre a cor secundária
-        onSecondary: DSColors.secondary,
+        onSecondary: DSColors.onSecondary,
 
         /// Cor usada para indicar erros e estados de falha
         error: DSColors.errorLight,
 
         /// Cor do texto e ícones que aparecem sobre a cor de erro
-        onError: DSColors.errorLight,
+        onError: DSColors.onError,
 
         /// Cor de fundo das superfícies (cards, sheets, dialogs)
-        surface: DSColors.light,
+        surface: DSColors.surfaceLight,
 
         /// Cor do texto e ícones que aparecem sobre a superfície
-        onSurface: DSColors.light,
+        onSurface: DSColors.onSurfaceLight,
       ),
-      scaffoldBackgroundColor: DSColors.light,
+      scaffoldBackgroundColor: DSColors.backgroundLight,
       useMaterial3: true,
     );
   }
@@ -51,30 +51,30 @@ class DSTheme {
         brightness: Brightness.dark,
 
         /// Cor primária do tema, usada para elementos principais e interativos
-        primary: DSColors.primary,
+        primary: DSColors.primaryDark,
 
         /// Cor do texto e ícones que aparecem sobre a cor primária
-        onPrimary: DSColors.primary,
+        onPrimary: DSColors.onPrimary,
 
         /// Cor secundária do tema, usada para elementos de destaque alternativos
-        secondary: DSColors.secondary,
+        secondary: DSColors.secondaryDark,
 
         /// Cor do texto e ícones que aparecem sobre a cor secundária
-        onSecondary: DSColors.secondary,
+        onSecondary: DSColors.onSecondary,
 
         /// Cor usada para indicar erros e estados de falha
         error: DSColors.errorDark,
 
         /// Cor do texto e ícones que aparecem sobre a cor de erro
-        onError: DSColors.errorDark,
+        onError: DSColors.onError,
 
         /// Cor de fundo das superfícies (cards, sheets, dialogs)
-        surface: DSColors.dark,
+        surface: DSColors.surfaceDark,
 
         /// Cor do texto e ícones que aparecem sobre a superfície
-        onSurface: DSColors.dark,
+        onSurface: DSColors.onSurfaceDark,
       ),
-      scaffoldBackgroundColor: DSColors.dark,
+      scaffoldBackgroundColor: DSColors.backgroundDark,
       useMaterial3: true,
     );
   }
