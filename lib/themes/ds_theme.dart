@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/tokens/ds_colors.dart';
+import 'package:flutter_design_system/tokens/ds_typography.dart';
+import 'package:flutter_design_system/tokens/ds_spacing.dart';
 
 /// Theme do design system
 class DSTheme {
@@ -42,6 +44,45 @@ class DSTheme {
       cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundLight,
       useMaterial3: true,
+
+      /// Estilo para botões elevados
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: DSColors.primaryLight,
+          foregroundColor: DSColors.onPrimary,
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          elevation: 2,
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
+
+      /// Estilo para botões de texto
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: DSColors.primaryLight,
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
+
+      /// Estilo para botões outlined
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: DSColors.primaryLight,
+          side: BorderSide(color: DSColors.primaryLight),
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
     );
   }
 
@@ -80,6 +121,45 @@ class DSTheme {
       cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundDark,
       useMaterial3: true,
+
+      /// Estilo para botões elevados
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: DSColors.primaryDark,
+          foregroundColor: DSColors.onPrimary,
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          elevation: 2,
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
+
+      /// Estilo para botões de texto
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: DSColors.primaryDark,
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
+
+      /// Estilo para botões outlined
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: DSColors.primaryDark,
+          side: BorderSide(color: DSColors.primaryDark),
+          padding: EdgeInsets.symmetric(
+            horizontal: DSSpacing.md,
+            vertical: DSSpacing.sm,
+          ),
+          textStyle: DSTypographyMedium.labelMedium,
+        ),
+      ),
     );
   }
 }
