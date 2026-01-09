@@ -5,6 +5,8 @@ import 'package:flutter_design_system/tokens/ds_colors.dart';
 class DSTheme {
   DSTheme._();
 
+  static const CardThemeData cardTheme = CardThemeData(elevation: 4);
+
   /// Theme claro
   static ThemeData light() {
     return ThemeData(
@@ -37,6 +39,7 @@ class DSTheme {
         /// Cor do texto e ícones que aparecem sobre a superfície
         onSurface: DSColors.onSurfaceLight,
       ),
+      cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundLight,
       useMaterial3: true,
     );
@@ -74,6 +77,7 @@ class DSTheme {
         /// Cor do texto e ícones que aparecem sobre a superfície
         onSurface: DSColors.onSurfaceDark,
       ),
+      cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundDark,
       useMaterial3: true,
     );
