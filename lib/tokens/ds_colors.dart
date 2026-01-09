@@ -47,6 +47,18 @@ class DSColors {
   static const Color onError = Color(0xFFFFFFFF);
 
   // ============================================
+  // Warning Colors
+  // ============================================
+  /// Cor de aviso clara (para tema light)
+  static const Color warningLight = Color(0xFFFF9800);
+
+  /// Cor de aviso escura (para tema dark)
+  static const Color warningDark = Color(0xFFF57C00);
+
+  /// Texto sobre cor de aviso (branco para contraste)
+  static const Color onWarning = Color(0xFFFFFFFF);
+
+  // ============================================
   // Surface Colors
   // ============================================
   /// Superfície no tema claro (cinza muito claro para cards)
