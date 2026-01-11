@@ -3,3 +3,4 @@ export 'tokens/ds_typography.dart';
 export 'tokens/ds_colors.dart';
 export 'tokens/ds_radius.dart';
 export 'themes/ds_theme.dart';
+export 'widgets/ds_bottom_sheet.dart';
