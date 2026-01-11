@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 showDSModalBottomSheet({
   required BuildContext context,
   required Widget widget,
+  bool isDismissible = true,
+  bool enableDrag = true,
 }) {
-  showModalBottomSheet(context: context, builder: (context) => widget);
+  showModalBottomSheet(
+    enableDrag: enableDrag,
+    isDismissible: isDismissible,
+    context: context,
+    builder: (context) => widget,
+  );
 }
