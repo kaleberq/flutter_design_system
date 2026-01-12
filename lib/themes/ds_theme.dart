@@ -83,6 +83,11 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
+
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: DSColors.surfaceLight,
+        modalBackgroundColor: DSColors.surfaceLight,
+      ),
     );
   }
 
@@ -159,6 +164,11 @@ class DSTheme {
           ),
           textStyle: DSTypographyMedium.labelMedium,
         ),
+      ),
+
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: DSColors.surfaceDark,
+        modalBackgroundColor: DSColors.surfaceDark,
       ),
     );
   }
