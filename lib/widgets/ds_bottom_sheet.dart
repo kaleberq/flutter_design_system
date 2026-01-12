@@ -10,6 +10,6 @@ showDSModalBottomSheet({
     enableDrag: enableDrag,
     isDismissible: isDismissible,
     context: context,
-    builder: (context) => widget,
+    builder: (context) => SafeArea(child: widget),
   );
 }
