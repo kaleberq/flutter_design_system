@@ -24,22 +24,6 @@ class DSTypographyRegular {
   DSTypographyRegular._();
 
   // Title
-  static TextStyle get labelXLarge =>
-      _createTextStyle(fontSize: _TypographySizes.labelXLarge);
-  static TextStyle get labelLarge =>
-      _createTextStyle(fontSize: _TypographySizes.labelLarge);
-  static TextStyle get labelMedium =>
-      _createTextStyle(fontSize: _TypographySizes.labelMedium);
-  static TextStyle get labelSmall =>
-      _createTextStyle(fontSize: _TypographySizes.labelSmall);
-  static TextStyle get labelXSmall =>
-      _createTextStyle(fontSize: _TypographySizes.labelXSmall);
-}
-
-/// Tipografia Medium
-class DSTypographyMedium {
-  DSTypographyMedium._();
-
   static TextStyle get labelXLarge => _createTextStyle(
     fontSize: _TypographySizes.labelXLarge,
     fontWeight: FontWeight.w500,
@@ -59,6 +43,32 @@ class DSTypographyMedium {
   static TextStyle get labelXSmall => _createTextStyle(
     fontSize: _TypographySizes.labelXSmall,
     fontWeight: FontWeight.w500,
+  );
+}
+
+/// Tipografia Medium
+class DSTypographyMedium {
+  DSTypographyMedium._();
+
+  static TextStyle get labelXLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelXLarge,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelLarge,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelMedium => _createTextStyle(
+    fontSize: _TypographySizes.labelMedium,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelSmall,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelXSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelXSmall,
+    fontWeight: FontWeight.w600,
   );
 }
 
@@ -68,22 +78,22 @@ class DSTypographySemiBold {
 
   static TextStyle get labelXLarge => _createTextStyle(
     fontSize: _TypographySizes.labelXLarge,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static TextStyle get labelLarge => _createTextStyle(
     fontSize: _TypographySizes.labelLarge,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static TextStyle get labelMedium => _createTextStyle(
     fontSize: _TypographySizes.labelMedium,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static TextStyle get labelSmall => _createTextStyle(
     fontSize: _TypographySizes.labelSmall,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static TextStyle get labelXSmall => _createTextStyle(
     fontSize: _TypographySizes.labelXSmall,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
 }
