@@ -23,7 +23,6 @@ TextStyle _createTextStyle({required double fontSize, FontWeight? fontWeight}) {
 class DSTypographyRegular {
   DSTypographyRegular._();
 
-  // Title
   static TextStyle get labelXLarge => _createTextStyle(
     fontSize: _TypographySizes.labelXLarge,
     fontWeight: FontWeight.w500,
