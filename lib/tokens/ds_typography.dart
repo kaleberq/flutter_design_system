@@ -25,22 +25,6 @@ class DSTypographyRegular {
 
   // Title
   static TextStyle get labelXLarge =>
-      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w400);
-  static TextStyle get labelLarge =>
-      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w400);
-  static TextStyle get labelMedium =>
-      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w400);
-  static TextStyle get labelSmall =>
-      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w400);
-  static TextStyle get labelXSmall =>
-      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w400);
-}
-
-/// Tipografia Medium
-class DSTypographyMedium {
-  DSTypographyMedium._();
-
-  static TextStyle get labelXLarge =>
       _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w500);
   static TextStyle get labelLarge =>
       _createTextStyle(_TypographySizes.labelLarge, FontWeight.w500);
@@ -52,9 +36,9 @@ class DSTypographyMedium {
       _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w500);
 }
 
-/// Tipografia SemiBold
-class DSTypographySemiBold {
-  DSTypographySemiBold._();
+/// Tipografia Medium
+class DSTypographyMedium {
+  DSTypographyMedium._();
 
   static TextStyle get labelXLarge =>
       _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w600);
@@ -66,4 +50,20 @@ class DSTypographySemiBold {
       _createTextStyle(_TypographySizes.labelSmall, FontWeight.w600);
   static TextStyle get labelXSmall =>
       _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w600);
+}
+
+/// Tipografia SemiBold
+class DSTypographySemiBold {
+  DSTypographySemiBold._();
+
+  static TextStyle get labelXLarge =>
+      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w700);
+  static TextStyle get labelLarge =>
+      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w700);
+  static TextStyle get labelMedium =>
+      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w700);
+  static TextStyle get labelSmall =>
+      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w700);
+  static TextStyle get labelXSmall =>
+      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w700);
 }
