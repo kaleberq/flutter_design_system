@@ -15,7 +15,7 @@ class _TypographySizes {
 }
 
 /// Helper privado para criar TextStyles
-TextStyle _createTextStyle(double fontSize, FontWeight fontWeight) {
+TextStyle _createTextStyle({required double fontSize, FontWeight? fontWeight}) {
   return GoogleFonts.montserrat(fontSize: fontSize, fontWeight: fontWeight);
 }
 
@@ -24,46 +24,76 @@ class DSTypographyRegular {
   DSTypographyRegular._();
 
   // Title
-  static TextStyle get labelXLarge =>
-      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w500);
-  static TextStyle get labelLarge =>
-      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w500);
-  static TextStyle get labelMedium =>
-      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w500);
-  static TextStyle get labelSmall =>
-      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w500);
-  static TextStyle get labelXSmall =>
-      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w500);
+  static TextStyle get labelXLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelXLarge,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle get labelLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelLarge,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle get labelMedium => _createTextStyle(
+    fontSize: _TypographySizes.labelMedium,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle get labelSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelSmall,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle get labelXSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelXSmall,
+    fontWeight: FontWeight.w500,
+  );
 }
 
 /// Tipografia Medium
 class DSTypographyMedium {
   DSTypographyMedium._();
 
-  static TextStyle get labelXLarge =>
-      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w600);
-  static TextStyle get labelLarge =>
-      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w600);
-  static TextStyle get labelMedium =>
-      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w600);
-  static TextStyle get labelSmall =>
-      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w600);
-  static TextStyle get labelXSmall =>
-      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w600);
+  static TextStyle get labelXLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelXLarge,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelLarge,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelMedium => _createTextStyle(
+    fontSize: _TypographySizes.labelMedium,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelSmall,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle get labelXSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelXSmall,
+    fontWeight: FontWeight.w600,
+  );
 }
 
 /// Tipografia SemiBold
 class DSTypographySemiBold {
   DSTypographySemiBold._();
 
-  static TextStyle get labelXLarge =>
-      _createTextStyle(_TypographySizes.labelXLarge, FontWeight.w700);
-  static TextStyle get labelLarge =>
-      _createTextStyle(_TypographySizes.labelLarge, FontWeight.w700);
-  static TextStyle get labelMedium =>
-      _createTextStyle(_TypographySizes.labelMedium, FontWeight.w700);
-  static TextStyle get labelSmall =>
-      _createTextStyle(_TypographySizes.labelSmall, FontWeight.w700);
-  static TextStyle get labelXSmall =>
-      _createTextStyle(_TypographySizes.labelXSmall, FontWeight.w700);
+  static TextStyle get labelXLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelXLarge,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle get labelLarge => _createTextStyle(
+    fontSize: _TypographySizes.labelLarge,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle get labelMedium => _createTextStyle(
+    fontSize: _TypographySizes.labelMedium,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle get labelSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelSmall,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle get labelXSmall => _createTextStyle(
+    fontSize: _TypographySizes.labelXSmall,
+    fontWeight: FontWeight.w700,
+  );
 }
