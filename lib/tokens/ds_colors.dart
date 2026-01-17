@@ -43,12 +43,6 @@ class DSColors {
   /// Cor de erro escura (para tema dark)
   static const Color errorDark = Color(0xFF8E0000);
 
-  /// Retorna a cor de erro baseada no contexto do tema atual
-  static Color error(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.light ? errorLight : errorDark;
-  }
-
   /// Texto sobre cor de erro (branco para contraste)
   static const Color onError = Color(0xFFFFFFFF);
 
@@ -60,12 +54,6 @@ class DSColors {
 
   /// Cor de aviso escura (para tema dark)
   static const Color _warningDark = Color(0xFFF57C00);
-
-  /// Retorna a cor de aviso baseada no contexto do tema atual
-  static Color warning(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.light ? _warningLight : _warningDark;
-  }
 
   /// Texto sobre cor de aviso (branco para contraste)
   static const Color onWarning = Color(0xFFFFFFFF);
@@ -93,4 +81,27 @@ class DSColors {
 
   /// Fundo no tema escuro (preto)
   static const Color backgroundDark = Color(0xFF121212);
+
+  /// Cor preta
+  static const Color _black = Color(0xFF000000);
+
+  /// Cor branca
+  static const Color _white = Color(0xFFFFFFFF);
+
+  /// Retorna a cor de erro baseada no contexto do tema atual
+  static Color error(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.light ? errorLight : errorDark;
+  }
+
+  /// Retorna a cor de aviso baseada no contexto do tema atual
+  static Color warning(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.light ? _warningLight : _warningDark;
+  }
+
+  static onBackground(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.light ? _black : _white;
+  }
 }
