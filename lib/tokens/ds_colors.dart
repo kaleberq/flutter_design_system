@@ -104,4 +104,9 @@ class DSColors {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.light ? _black : _white;
   }
+
+  static onBackgroundInverse(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.light ? _white : _black;
+  }
 }
