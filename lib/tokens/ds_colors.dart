@@ -83,10 +83,10 @@ class DSColors {
   static const Color backgroundDark = Color(0xFF121212);
 
   /// Cor preta
-  static const Color _black = Color(0xFF000000);
+  static const Color black = Color(0xFF000000);
 
   /// Cor branca
-  static const Color _white = Color(0xFFFFFFFF);
+  static const Color white = Color(0xFFFFFFFF);
 
   /// Retorna a cor de erro baseada no contexto do tema atual
   static Color error(BuildContext context) {
@@ -102,11 +102,11 @@ class DSColors {
 
   static onBackground(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.light ? _black : _white;
+    return brightness == Brightness.light ? black : white;
   }
 
   static onBackgroundInverse(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.light ? _white : _black;
+    return brightness == Brightness.light ? white : black;
   }
 }
