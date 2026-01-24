@@ -1,0 +1,1 @@
+enum DsDividerType { horizontal, vertical }
