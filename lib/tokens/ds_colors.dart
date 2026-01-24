@@ -88,25 +88,39 @@ class DSColors {
   /// Cor branca
   static const Color white = Color(0xFFFFFFFF);
 
-  /// Retorna a cor de erro baseada no contexto do tema atual
-  static Color error(BuildContext context) {
+  /// Cor cinza escuro
+  static const Color darkGrey = Color(0xFF424242);
+
+  /// Cor cinza claro
+  static const Color lightGrey = Color(0xFFBDBDBD);
+
+  /// Resolve a cor de erro de acordo com o tema atual
+  static Color resolveErrorColor(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.light ? errorLight : errorDark;
   }
 
-  /// Retorna a cor de aviso baseada no contexto do tema atual
-  static Color warning(BuildContext context) {
+  /// Resolve a cor de aviso de acordo com o tema atual
+  static Color resolveWarningColor(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.light ? _warningLight : _warningDark;
   }
 
-  static onBackground(BuildContext context) {
+  /// Resolve a cor de conteúdo sobre o background
+  static Color resolveBackgroundColor(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.light ? black : white;
   }
 
-  static onBackgroundInverse(BuildContext context) {
+  /// Resolve a cor de conteúdo sobre o background inverso
+  static Color resolveBackgroundInverseColor(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.light ? white : black;
+  }
+
+  /// Resolve a cor cinza de superfície conforme o tema atual
+  static Color resolveGreyColor(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.light ? darkGrey : lightGrey;
   }
 }
