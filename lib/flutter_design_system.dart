@@ -8,6 +8,11 @@ export 'themes/ds_theme.dart';
 //Widgets
 export 'widgets/ds_bottom_sheet.dart';
 export 'widgets/ds_divider.dart';
+export 'widgets/ds_button.dart';
+export 'widgets/ds_loading_button.dart';
+export 'widgets/ds_scaffold.dart';
 
 //Enums
 export 'enums/ds_divider_type.dart';
+export 'enums/ds_button_type.dart';
+export 'enums/ds_loading_button_icon_position.dart';

@@ -1,0 +1,1 @@
+enum DsLoadingButtonIconPosition { left, right }
