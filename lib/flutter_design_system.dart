@@ -11,6 +11,7 @@ export 'widgets/ds_divider.dart';
 export 'widgets/ds_button.dart';
 export 'widgets/ds_loading_button.dart';
 export 'widgets/ds_scaffold.dart';
+export 'widgets/ds_shimmer.dart';
 
 //Enums
 export 'enums/ds_divider_type.dart';
