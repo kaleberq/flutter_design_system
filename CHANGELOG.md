@@ -1,3 +1,9 @@
+## 0.0.43 (2026-08-28)
+
+* fix: update DSShimmer widget to include maxHeight constraint in BoxCo… (#45)
+
+* …nstraints
+
 ## 0.0.42 (2026-08-27)
 
 * fix: correct class name to DSShimmer and update container color variable name (#43)
