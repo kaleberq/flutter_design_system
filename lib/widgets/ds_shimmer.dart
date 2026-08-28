@@ -36,8 +36,10 @@ class DSShimmer extends StatelessWidget {
     baseColor: baseColor,
     highlightColor: highlightColor,
     child: Container(
-      height: height,
-      constraints: BoxConstraints(maxWidth: width ?? 0,),
+      constraints: BoxConstraints(
+        maxWidth: width ?? 0,
+        maxHeight: height ?? double.infinity,
+      ),
       decoration: BoxDecoration(
         color: contrainerColor,
         borderRadius: BorderRadius.circular(radius),
