@@ -1,3 +1,9 @@
+## 0.0.45 (2026-08-29)
+
+* chore: update CHANGELOG and remove mutedOnSurface getter (#47)
+
+* Removed the mutedOnSurface getter from DSTheme and updated the CHANGELOG to reflect this breaking change. Refactored the DsContext extension into a separate file for better organization.
+
 ## 0.0.44 (2026-08-29)
 
 * Change theme (#46)
