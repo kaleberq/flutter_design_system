@@ -5,47 +5,77 @@ import 'package:flutter_design_system/tokens/ds_spacing.dart';
 
 /// Theme do design system
 class DSTheme {
-  DSTheme._();
+  DSTheme._(this._context);
+
+  final BuildContext _context;
 
   static const CardThemeData cardTheme = CardThemeData(elevation: 4);
+
+  /// Leitura theme-aware no build.
+  static DSTheme of(BuildContext context) => DSTheme._(context);
+
+  ThemeData get theme => Theme.of(_context);
+
+  ColorScheme get scheme => theme.colorScheme;
+
+  Brightness get brightness => theme.brightness;
+
+  bool get isDark => brightness == Brightness.dark;
+
+  Color get primary => scheme.primary;
+
+  Color get onPrimary => scheme.onPrimary;
+
+  Color get secondary => scheme.secondary;
+
+  Color get onSecondary => scheme.onSecondary;
+
+  Color get error => scheme.error;
+
+  Color get onError => scheme.onError;
+
+  Color get surface => scheme.surface;
+
+  Color get onSurface => scheme.onSurface;
+
+  Color get outline => scheme.outline;
+
+  Color get errorContainer => scheme.errorContainer;
+
+  Color get onErrorContainer => scheme.onErrorContainer;
+
+  Color get scaffoldBackground => theme.scaffoldBackgroundColor;
+
+  Color get mutedOnSurface => onSurface.withValues(alpha: 0.6);
+
+  Color disabledPrimary([double alpha = 0.4]) =>
+      primary.withValues(alpha: alpha);
+
+  Color get grey => DSColors.resolveGreyColor(_context);
+
+  Color get warning => DSColors.resolveWarningColor(_context);
 
   /// Theme claro
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
       colorScheme: ColorScheme(
-        /// Define o brilho geral do esquema de cores
         brightness: Brightness.light,
-
-        /// Cor primária do tema, usada para elementos principais e interativos
         primary: DSColors.primaryLight,
-
-        /// Cor do texto e ícones que aparecem sobre a cor primária
         onPrimary: DSColors.onPrimary,
-
-        /// Cor secundária do tema, usada para elementos de destaque alternativos
         secondary: DSColors.secondaryLight,
-
-        /// Cor do texto e ícones que aparecem sobre a cor secundária
         onSecondary: DSColors.onSecondary,
-
-        /// Cor usada para indicar erros e estados de falha
         error: DSColors.errorLight,
-
-        /// Cor do texto e ícones que aparecem sobre a cor de erro
         onError: DSColors.onError,
-
-        /// Cor de fundo das superfícies (cards, sheets, dialogs)
         surface: DSColors.surfaceLight,
-
-        /// Cor do texto e ícones que aparecem sobre a superfície
         onSurface: DSColors.onSurfaceLight,
+        outline: DSColors.outlineLight,
+        errorContainer: DSColors.errorContainerLight,
+        onErrorContainer: DSColors.onErrorContainerLight,
       ),
       cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundLight,
       useMaterial3: true,
-
-      /// Estilo para botões elevados
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: DSColors.primaryLight,
@@ -58,8 +88,6 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
-      /// Estilo para botões de texto
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: DSColors.primaryLight,
@@ -70,8 +98,6 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
-      /// Estilo para botões outlined
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: DSColors.primaryLight,
@@ -83,7 +109,6 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: DSColors.surfaceLight,
         modalBackgroundColor: DSColors.surfaceLight,
@@ -96,38 +121,22 @@ class DSTheme {
     return ThemeData(
       brightness: Brightness.dark,
       colorScheme: ColorScheme(
-        /// Define o brilho geral do esquema de cores
         brightness: Brightness.dark,
-
-        /// Cor primária do tema, usada para elementos principais e interativos
         primary: DSColors.primaryDark,
-
-        /// Cor do texto e ícones que aparecem sobre a cor primária
         onPrimary: DSColors.onPrimary,
-
-        /// Cor secundária do tema, usada para elementos de destaque alternativos
         secondary: DSColors.secondaryDark,
-
-        /// Cor do texto e ícones que aparecem sobre a cor secundária
         onSecondary: DSColors.onSecondary,
-
-        /// Cor usada para indicar erros e estados de falha
         error: DSColors.errorDark,
-
-        /// Cor do texto e ícones que aparecem sobre a cor de erro
         onError: DSColors.onError,
-
-        /// Cor de fundo das superfícies (cards, sheets, dialogs)
         surface: DSColors.surfaceDark,
-
-        /// Cor do texto e ícones que aparecem sobre a superfície
         onSurface: DSColors.onSurfaceDark,
+        outline: DSColors.outlineDark,
+        errorContainer: DSColors.errorContainerDark,
+        onErrorContainer: DSColors.onErrorContainerDark,
       ),
       cardTheme: cardTheme,
       scaffoldBackgroundColor: DSColors.backgroundDark,
       useMaterial3: true,
-
-      /// Estilo para botões elevados
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: DSColors.primaryDark,
@@ -140,8 +149,6 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
-      /// Estilo para botões de texto
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: DSColors.primaryDark,
@@ -152,8 +159,6 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
-      /// Estilo para botões outlined
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: DSColors.primaryDark,
@@ -165,11 +170,14 @@ class DSTheme {
           textStyle: DSTypographyMedium.labelMedium,
         ),
       ),
-
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: DSColors.surfaceDark,
         modalBackgroundColor: DSColors.surfaceDark,
       ),
     );
   }
+}
+
+extension DsContext on BuildContext {
+  DSTheme get ds => DSTheme.of(this);
 }
