@@ -46,6 +46,24 @@ class DSColors {
   /// Texto sobre cor de erro (branco para contraste)
   static const Color onError = Color(0xFFFFFFFF);
 
+  /// Container de erro no tema claro
+  static const Color errorContainerLight = Color(0xFFFFDAD6);
+
+  /// Texto sobre container de erro no tema claro
+  static const Color onErrorContainerLight = Color(0xFF410002);
+
+  /// Container de erro no tema escuro
+  static const Color errorContainerDark = Color(0xFF93000A);
+
+  /// Texto sobre container de erro no tema escuro
+  static const Color onErrorContainerDark = Color(0xFFFFDAD6);
+
+  /// Borda/outline no tema claro
+  static const Color outlineLight = lightGrey;
+
+  /// Borda/outline no tema escuro
+  static const Color outlineDark = Color(0xFF757575);
+
   // ============================================
   // Warning Colors
   // ============================================
