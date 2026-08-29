@@ -177,7 +177,3 @@ class DSTheme {
     );
   }
 }
-
-extension DsContext on BuildContext {
-  DSTheme get ds => DSTheme.of(this);
-}

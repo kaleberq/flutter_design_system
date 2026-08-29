@@ -5,6 +5,9 @@ export 'tokens/ds_colors.dart';
 export 'tokens/ds_radius.dart';
 export 'themes/ds_theme.dart';
 
+//Extensions
+export 'extensions/ds_context_extension.dart';
+
 //Widgets
 export 'widgets/ds_bottom_sheet.dart';
 export 'widgets/ds_divider.dart';
