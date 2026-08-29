@@ -2,6 +2,8 @@
 
 * feat: add `DSTheme.of(context)` and `context.ds` for theme-aware color access
 * feat: add `outline`, `errorContainer`, and `onErrorContainer` tokens to `DSColors` and `ColorScheme`
+* breaking: remove `mutedOnSurface` getter
+* refactor: extract `DsContext` extension to `lib/extensions/ds_context_extension.dart`
 
 ## 0.0.43 (2026-08-28)
 

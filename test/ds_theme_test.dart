@@ -30,7 +30,6 @@ void main() {
       expect(ds.errorContainer, DSColors.errorContainerLight);
       expect(ds.onErrorContainer, DSColors.onErrorContainerLight);
       expect(ds.grey, DSColors.darkGrey);
-      expect(ds.mutedOnSurface, DSColors.onSurfaceLight.withValues(alpha: 0.6));
       expect(ds.disabledPrimary(), DSColors.primaryLight.withValues(alpha: 0.4));
       expect(ds.isDark, isFalse);
     });

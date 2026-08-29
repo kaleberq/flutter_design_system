@@ -46,8 +46,6 @@ class DSTheme {
 
   Color get scaffoldBackground => theme.scaffoldBackgroundColor;
 
-  Color get mutedOnSurface => onSurface.withValues(alpha: 0.6);
-
   Color disabledPrimary([double alpha = 0.4]) =>
       primary.withValues(alpha: alpha);
 
