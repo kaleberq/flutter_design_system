@@ -1,3 +1,7 @@
+## 0.0.47 (2026-08-31)
+
+* fix: enable extendBodyBehindAppBar in DsScaffold for improved layout (#49)
+
 ## 0.0.46 (2026-08-31)
 
 * feat: enhance DsScaffold with theme-aware background and gradient dec… (#48)
