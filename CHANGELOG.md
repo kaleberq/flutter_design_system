@@ -1,3 +1,10 @@
+## 0.0.48 (2026-08-31)
+
+* refactor: improve body layout in DsScaffold with gradient decoration … (#50)
+
+* …and padding adjustments
+* Updated the DsScaffold widget to utilize a gradient decoration for the body and introduced a method for dynamic content padding based on the app bar's presence. This enhances layout flexibility and visual consistency.
+
 ## 0.0.47 (2026-08-31)
 
 * fix: enable extendBodyBehindAppBar in DsScaffold for improved layout (#49)
