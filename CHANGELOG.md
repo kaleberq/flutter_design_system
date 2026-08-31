@@ -1,3 +1,10 @@
+## 0.0.46 (2026-08-31)
+
+* feat: enhance DsScaffold with theme-aware background and gradient dec… (#48)
+
+* …oration
+* Updated the DsScaffold widget to use a theme-aware background color and added a radial gradient decoration to the body. This improves visual consistency with the overall design system.
+
 ## 0.0.45 (2026-08-29)
 
 * chore: update CHANGELOG and remove mutedOnSurface getter (#47)
