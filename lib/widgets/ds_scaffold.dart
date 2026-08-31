@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/extensions/ds_context_extension.dart';
+import 'package:flutter_design_system/themes/ds_theme.dart';
 import 'package:flutter_design_system/tokens/ds_spacing.dart';
 
 class DsScaffold extends StatelessWidget {
@@ -31,17 +33,34 @@ class DsScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DSTheme ds = context.ds;
+    final Color resolvedBackgroundColor =
+        backgroundColor ?? ds.scaffoldBackground;
+    final double glowAlpha = ds.isDark ? 0.22 : 0.12;
+
     return Scaffold(
       appBar: appBar,
       floatingActionButton: floatingActionButton,
       bottomNavigationBar: bottomNavigationBar,
       drawer: drawer,
       endDrawer: endDrawer,
-      backgroundColor: backgroundColor,
+      backgroundColor: resolvedBackgroundColor,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       extendBody: extendBody,
       extendBodyBehindAppBar: extendBodyBehindAppBar,
-      body: Padding(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            center: Alignment.topCenter,
+            radius: 1.2,
+            colors: <Color>[
+              ds.primary.withValues(alpha: glowAlpha),
+              Colors.transparent,
+            ],
+          ),
+        ),
         padding:
             padding ??
             EdgeInsets.only(
