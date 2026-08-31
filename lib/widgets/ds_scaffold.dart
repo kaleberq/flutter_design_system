@@ -37,6 +37,19 @@ class DsScaffold extends StatelessWidget {
     final Color resolvedBackgroundColor =
         backgroundColor ?? ds.scaffoldBackground;
     final double glowAlpha = ds.isDark ? 0.22 : 0.12;
+    final BoxDecoration gradientDecoration = BoxDecoration(
+      gradient: RadialGradient(
+        center: Alignment.topCenter,
+        radius: 1.2,
+        colors: <Color>[
+          ds.primary.withValues(alpha: glowAlpha),
+          Colors.transparent,
+        ],
+      ),
+    );
+
+    final bool reserveAppBarSpace =
+        extendBodyBehindAppBar && appBar != null;
 
     return Scaffold(
       appBar: appBar,
@@ -48,29 +61,52 @@ class DsScaffold extends StatelessWidget {
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       extendBody: extendBody,
       extendBodyBehindAppBar: extendBodyBehindAppBar,
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            center: Alignment.topCenter,
-            radius: 1.2,
-            colors: <Color>[
-              ds.primary.withValues(alpha: glowAlpha),
-              Colors.transparent,
-            ],
-          ),
-        ),
-        padding:
-            padding ??
-            EdgeInsets.only(
-              left: DSSpacing.md,
-              right: DSSpacing.md,
-              top: DSSpacing.sm,
-              bottom: DSSpacing.sm,
+      body: reserveAppBarSpace
+          ? Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+                Container(decoration: gradientDecoration),
+                Padding(
+                  padding: _contentPadding(context),
+                  child: body,
+                ),
+              ],
+            )
+          : Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: gradientDecoration,
+              padding: _contentPadding(context),
+              child: body,
             ),
-        child: body,
-      ),
+    );
+  }
+
+  EdgeInsetsGeometry _contentPadding(BuildContext context) {
+    final bool reserveAppBarSpace =
+        extendBodyBehindAppBar && appBar != null;
+    final double topInset = reserveAppBarSpace
+        ? MediaQuery.paddingOf(context).top + appBar!.preferredSize.height
+        : 0;
+
+    if (padding != null) {
+      if (padding is EdgeInsets) {
+        final EdgeInsets resolved = padding! as EdgeInsets;
+        return EdgeInsets.only(
+          left: resolved.left,
+          right: resolved.right,
+          top: resolved.top + topInset,
+          bottom: resolved.bottom,
+        );
+      }
+      return padding!;
+    }
+
+    return EdgeInsets.only(
+      left: DSSpacing.md,
+      right: DSSpacing.md,
+      top: topInset + DSSpacing.sm,
+      bottom: DSSpacing.sm,
     );
   }
 }
