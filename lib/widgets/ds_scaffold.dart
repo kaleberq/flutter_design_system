@@ -27,7 +27,7 @@ class DsScaffold extends StatelessWidget {
     this.backgroundColor,
     this.resizeToAvoidBottomInset = true,
     this.extendBody = false,
-    this.extendBodyBehindAppBar = true,
+    this.extendBodyBehindAppBar = false,
     this.padding,
   });
 
@@ -48,64 +48,39 @@ class DsScaffold extends StatelessWidget {
       ),
     );
 
-    final bool reserveAppBarSpace =
-        extendBodyBehindAppBar && appBar != null;
-
-    return Scaffold(
-      appBar: appBar,
-      floatingActionButton: floatingActionButton,
-      bottomNavigationBar: bottomNavigationBar,
-      drawer: drawer,
-      endDrawer: endDrawer,
-      backgroundColor: resolvedBackgroundColor,
-      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-      extendBody: extendBody,
-      extendBodyBehindAppBar: extendBodyBehindAppBar,
-      body: reserveAppBarSpace
-          ? Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                Container(decoration: gradientDecoration),
-                Padding(
-                  padding: _contentPadding(context),
-                  child: body,
-                ),
-              ],
-            )
-          : Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: gradientDecoration,
-              padding: _contentPadding(context),
-              child: body,
-            ),
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        ColoredBox(color: resolvedBackgroundColor),
+        Container(decoration: gradientDecoration),
+        Scaffold(
+          appBar: appBar,
+          floatingActionButton: floatingActionButton,
+          bottomNavigationBar: bottomNavigationBar,
+          drawer: drawer,
+          endDrawer: endDrawer,
+          backgroundColor: Colors.transparent,
+          resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+          extendBody: extendBody,
+          extendBodyBehindAppBar: extendBodyBehindAppBar,
+          body: Padding(
+            padding: _contentPadding(context),
+            child: body,
+          ),
+        ),
+      ],
     );
   }
 
   EdgeInsetsGeometry _contentPadding(BuildContext context) {
-    final bool reserveAppBarSpace =
-        extendBodyBehindAppBar && appBar != null;
-    final double topInset = reserveAppBarSpace
-        ? MediaQuery.paddingOf(context).top + appBar!.preferredSize.height
-        : 0;
-
     if (padding != null) {
-      if (padding is EdgeInsets) {
-        final EdgeInsets resolved = padding! as EdgeInsets;
-        return EdgeInsets.only(
-          left: resolved.left,
-          right: resolved.right,
-          top: resolved.top + topInset,
-          bottom: resolved.bottom,
-        );
-      }
       return padding!;
     }
 
-    return EdgeInsets.only(
+    return const EdgeInsets.only(
       left: DSSpacing.md,
       right: DSSpacing.md,
-      top: topInset + DSSpacing.sm,
+      top: DSSpacing.sm,
       bottom: DSSpacing.sm,
     );
   }
