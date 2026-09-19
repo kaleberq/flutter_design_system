@@ -1,3 +1,9 @@
+## 0.0.49 (2026-09-19)
+
+* feat: improve light theme contrast (surfaces, outlines, labels, FAB, status bar)
+* fix: disable scaffold glow and surface tint in light mode
+* feat: add `cardColor`, `cardShape`, and `onSurfaceVariant` helpers on `DSTheme`
+
 ## 0.0.48 (2026-08-31)
 
 * refactor: improve body layout in DsScaffold with gradient decoration … (#50)
