@@ -17,7 +17,7 @@ class DSShimmer extends StatelessWidget {
     this.height,
     this.radius = DSRadius.md,
     this.contrainerColor = DSColors.white,
-    this.baseColor = DSColors.surfaceLight,
+    this.baseColor = DSColors.shimmerBaseLight,
     this.highlightColor = DSColors.lightGrey,
   });
 
@@ -27,7 +27,7 @@ class DSShimmer extends StatelessWidget {
     this.height,
     this.radius = DSRadius.circular,
     this.contrainerColor = DSColors.white,
-    this.baseColor = DSColors.surfaceLight,
+    this.baseColor = DSColors.shimmerBaseLight,
     this.highlightColor = DSColors.lightGrey,
   });
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_design_system/extensions/ds_context_extension.dart';
 import 'package:flutter_design_system/themes/ds_theme.dart';
 import 'package:flutter_design_system/tokens/ds_spacing.dart';
@@ -36,55 +37,61 @@ class DsScaffold extends StatelessWidget {
     final DSTheme ds = context.ds;
     final Color resolvedBackgroundColor =
         backgroundColor ?? ds.scaffoldBackground;
-    final double glowAlpha = ds.isDark ? 0.22 : 0.12;
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: ds.systemOverlayStyle,
+      child: Scaffold(
+        appBar: appBar,
+        floatingActionButton: floatingActionButton,
+        bottomNavigationBar: bottomNavigationBar,
+        drawer: drawer,
+        endDrawer: endDrawer,
+        backgroundColor: resolvedBackgroundColor,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        extendBody: extendBody,
+        extendBodyBehindAppBar: extendBodyBehindAppBar,
+        body: _buildBody(context, ds),
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context, DSTheme ds) {
+    final EdgeInsetsGeometry contentPadding = _contentPadding(context);
+    final bool reserveAppBarSpace = extendBodyBehindAppBar && appBar != null;
+
+    if (!ds.isDark) {
+      return Padding(padding: contentPadding, child: body);
+    }
+
     final BoxDecoration gradientDecoration = BoxDecoration(
       gradient: RadialGradient(
         center: Alignment.topCenter,
         radius: 1.2,
-        colors: <Color>[
-          ds.primary.withValues(alpha: glowAlpha),
-          Colors.transparent,
-        ],
+        colors: <Color>[ds.primary.withValues(alpha: 0.22), Colors.transparent],
       ),
     );
 
-    final bool reserveAppBarSpace =
-        extendBodyBehindAppBar && appBar != null;
+    if (reserveAppBarSpace) {
+      return Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(decoration: gradientDecoration),
+          Padding(padding: contentPadding, child: body),
+        ],
+      );
+    }
 
-    return Scaffold(
-      appBar: appBar,
-      floatingActionButton: floatingActionButton,
-      bottomNavigationBar: bottomNavigationBar,
-      drawer: drawer,
-      endDrawer: endDrawer,
-      backgroundColor: resolvedBackgroundColor,
-      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-      extendBody: extendBody,
-      extendBodyBehindAppBar: extendBodyBehindAppBar,
-      body: reserveAppBarSpace
-          ? Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                Container(decoration: gradientDecoration),
-                Padding(
-                  padding: _contentPadding(context),
-                  child: body,
-                ),
-              ],
-            )
-          : Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: gradientDecoration,
-              padding: _contentPadding(context),
-              child: body,
-            ),
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: gradientDecoration,
+      padding: contentPadding,
+      child: body,
     );
   }
 
   EdgeInsetsGeometry _contentPadding(BuildContext context) {
-    final bool reserveAppBarSpace =
-        extendBodyBehindAppBar && appBar != null;
+    final bool reserveAppBarSpace = extendBodyBehindAppBar && appBar != null;
     final double topInset = reserveAppBarSpace
         ? MediaQuery.paddingOf(context).top + appBar!.preferredSize.height
         : 0;
