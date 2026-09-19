@@ -1,3 +1,10 @@
+## 0.0.49 (2026-09-19)
+
+* chore: bump version to 0.0.49 and enhance DSTheme with new color and … (#51)
+
+* …style properties
+* Updated the DSTheme to include new system overlay styles, outline variants, and input decoration themes for both light and dark modes. Adjusted the DSColors to reflect these changes and improved the DsScaffold widget to utilize the new theme properties. Additionally, updated tests to cover new features and ensure consistency.
+
 ## 0.0.48 (2026-08-31)
 
 * refactor: improve body layout in DsScaffold with gradient decoration … (#50)
