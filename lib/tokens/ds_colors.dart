@@ -58,11 +58,17 @@ class DSColors {
   /// Texto sobre container de erro no tema escuro
   static const Color onErrorContainerDark = Color(0xFFFFDAD6);
 
-  /// Borda/outline no tema claro
-  static const Color outlineLight = lightGrey;
+  /// Borda/outline no tema claro (inputs)
+  static const Color outlineLight = Color(0xFFD1D5DB);
 
   /// Borda/outline no tema escuro
   static const Color outlineDark = Color(0xFF757575);
+
+  /// Borda secundária no tema claro (cards)
+  static const Color outlineVariantLight = Color(0xFFE5E7EB);
+
+  /// Borda secundária no tema escuro
+  static const Color outlineVariantDark = Color(0xFF424242);
 
   // ============================================
   // Warning Colors
@@ -79,8 +85,8 @@ class DSColors {
   // ============================================
   // Surface Colors
   // ============================================
-  /// Superfície no tema claro (cinza muito claro para cards)
-  static const Color surfaceLight = Color(0xFFF5F5F5);
+  /// Superfície no tema claro (branco para cards e inputs)
+  static const Color surfaceLight = Color(0xFFFFFFFF);
 
   /// Superfície no tema escuro (cinza escuro para cards)
   static const Color surfaceDark = Color(0xFF1E1E1E);
@@ -91,11 +97,20 @@ class DSColors {
   /// Texto sobre superfície no tema escuro (branco)
   static const Color onSurfaceDark = Color(0xFFFFFFFF);
 
+  /// Rótulos e texto secundário no tema claro
+  static const Color onSurfaceVariantLight = Color(0xFF4B5563);
+
+  /// Rótulos e texto secundário no tema escuro
+  static const Color onSurfaceVariantDark = lightGrey;
+
+  /// Base do shimmer no tema claro (independente da surface branca)
+  static const Color shimmerBaseLight = outlineVariantLight;
+
   // ============================================
   // Background Colors
   // ============================================
-  /// Fundo no tema claro (branco)
-  static const Color backgroundLight = Color(0xFFFFFFFF);
+  /// Fundo no tema claro (cinza neutro suave)
+  static const Color backgroundLight = Color(0xFFF8F9FA);
 
   /// Fundo no tema escuro (preto)
   static const Color backgroundDark = Color(0xFF121212);
