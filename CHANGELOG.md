@@ -1,3 +1,9 @@
+## 0.0.50 (2026-09-20)
+
+* feat: add DsTableCalendar widget and update dependencies (#52)
+
+* Introduced a new DsTableCalendar widget for enhanced calendar functionality. Updated pubspec.yaml to include the intl and table_calendar packages. Updated the flutter_design_system.dart to export the new widget. Added unit tests for the DsTableCalendar to ensure proper rendering and interaction.
+
 ## 0.0.49 (2026-09-19)
 
 * chore: bump version to 0.0.49 and enhance DSTheme with new color and … (#51)
