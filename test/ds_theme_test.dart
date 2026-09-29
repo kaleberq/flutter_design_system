@@ -70,9 +70,9 @@ void main() {
       expect(ds.outlineVariant, DSColors.outlineVariantDark);
       expect(ds.errorContainer, DSColors.errorContainerDark);
       expect(ds.onErrorContainer, DSColors.onErrorContainerDark);
-      expect(ds.grey, DSColors.lightGrey);
+      expect(ds.grey, DSColors.greyDark);
       expect(ds.isDark, isTrue);
-      expect(ds.cardColor, DSColors.surfaceDark.withValues(alpha: 0.55));
+      expect(ds.cardColor, DSColors.surfaceDark);
       expect(ds.systemOverlayStyle.statusBarIconBrightness, Brightness.light);
       expect(Theme.of(context).floatingActionButtonTheme.elevation, 6);
     });
