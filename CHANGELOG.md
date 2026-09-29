@@ -1,3 +1,9 @@
+## 0.0.51 (2026-09-29)
+
+* feat: enhance DSTheme and DSColors with new color properties and themes (#53)
+
+* Added new color properties to DSTheme for primary text, primary button, and secondary surface colors. Updated DSColors with refined primary colors and introduced new secondary surface colors for both light and dark themes. Adjusted existing color definitions for better contrast and visual consistency across the theme.
+
 ## 0.0.50 (2026-09-20)
 
 * feat: add DsTableCalendar widget and update dependencies (#52)
