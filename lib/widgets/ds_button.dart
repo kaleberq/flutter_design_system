@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/enums/ds_button_type.dart';
 import 'package:flutter_design_system/tokens/ds_colors.dart';
+import 'package:flutter_design_system/tokens/ds_radius.dart';
 import 'package:flutter_design_system/tokens/ds_spacing.dart';
 
 class DsButton extends StatelessWidget {
@@ -25,6 +26,10 @@ class DsButton extends StatelessWidget {
     this.iconRight,
   });
 
+  static final RoundedRectangleBorder _shape = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(DSRadius.sm),
+  );
+
   @override
   Widget build(BuildContext context) {
     final VoidCallback? onPressed = isEnable ? function : null;
@@ -44,6 +49,7 @@ class DsButton extends StatelessWidget {
             foregroundColor: DSColors.onPrimary,
             disabledBackgroundColor: color.withValues(alpha: 0.4),
             disabledForegroundColor: DSColors.onPrimary.withValues(alpha: 0.7),
+            shape: _shape,
           ),
           child: child,
         );
@@ -56,6 +62,7 @@ class DsButton extends StatelessWidget {
             side: BorderSide(
               color: isEnable ? color : color.withValues(alpha: 0.4),
             ),
+            shape: _shape,
           ),
           child: child,
         );
@@ -65,6 +72,7 @@ class DsButton extends StatelessWidget {
           style: TextButton.styleFrom(
             foregroundColor: color,
             disabledForegroundColor: color.withValues(alpha: 0.4),
+            shape: _shape,
           ),
           child: child,
         );
@@ -95,7 +103,14 @@ class _ButtonContent extends StatelessWidget {
           iconLeft!,
           const SizedBox(width: DSSpacing.sm),
         ],
-        Text(text, style: typographyStyle),
+        Flexible(
+          child: Text(
+            text,
+            style: typographyStyle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
         if (iconRight != null) ...[
           const SizedBox(width: DSSpacing.sm),
           iconRight!,
