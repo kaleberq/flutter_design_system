@@ -1,3 +1,9 @@
+## 0.0.52 (2026-09-29)
+
+* feat: enhance DsButton with rounded corners and text overflow handling (#54)
+
+* Updated the DsButton widget to include a rounded shape using DSRadius and improved text handling by allowing text overflow with ellipsis. Adjusted tests to reflect changes in DSColors for better consistency in dark mode.
+
 ## 0.0.51 (2026-09-29)
 
 * feat: enhance DSTheme and DSColors with new color properties and themes (#53)
