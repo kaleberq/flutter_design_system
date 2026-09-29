@@ -65,11 +65,26 @@ class DSTheme {
 
   Color get warning => DSColors.resolveWarningColor(_context);
 
+  /// Roxo primário com contraste suficiente para uso como texto de destaque
+  /// (ex.: preços) sobre a superfície do tema atual.
+  Color get primaryText =>
+      isDark ? DSColors.primaryTextDark : DSColors.primaryStrongLight;
+
+  /// Roxo primário reforçado para botões preenchidos (elevated/FAB),
+  /// garantindo contraste com o texto/ícone branco sobre ele.
+  Color get primaryButton =>
+      isDark ? DSColors.primaryButtonDark : DSColors.primaryStrongLight;
+
+  /// Superfície levemente destacada (tom sutil de lavanda), usada em
+  /// cabeçalhos de card, rodapés e bottom sheets.
+  Color get surfaceSecondary =>
+      isDark ? DSColors.surfaceSecondaryDark : DSColors.surfaceSecondaryLight;
+
   SystemUiOverlayStyle get systemOverlayStyle =>
       theme.appBarTheme.systemOverlayStyle ??
       (isDark ? darkSystemOverlayStyle : lightSystemOverlayStyle);
 
-  Color get cardColor => isDark ? surface.withValues(alpha: 0.55) : surface;
+  Color get cardColor => surface;
 
   ShapeBorder get cardShape => RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(DSRadius.md),
@@ -110,12 +125,12 @@ class DSTheme {
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         elevation: 2,
         highlightElevation: 4,
-        backgroundColor: DSColors.primaryLight,
+        backgroundColor: DSColors.primaryStrongLight,
         foregroundColor: DSColors.onPrimary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: DSColors.primaryLight,
+          backgroundColor: DSColors.primaryStrongLight,
           foregroundColor: DSColors.onPrimary,
           padding: EdgeInsets.symmetric(
             horizontal: DSSpacing.md,
@@ -187,12 +202,12 @@ class DSTheme {
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         elevation: 6,
         highlightElevation: 8,
-        backgroundColor: DSColors.primaryDark,
+        backgroundColor: DSColors.primaryButtonDark,
         foregroundColor: DSColors.onPrimary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: DSColors.primaryDark,
+          backgroundColor: DSColors.primaryButtonDark,
           foregroundColor: DSColors.onPrimary,
           padding: EdgeInsets.symmetric(
             horizontal: DSSpacing.md,
