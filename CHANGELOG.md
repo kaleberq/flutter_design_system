@@ -1,3 +1,9 @@
+## 0.0.53 (2026-10-01)
+
+* feat: update DsButton tap target size for improved usability (#55)
+
+* Added tapTargetSize property set to shrinkWrap in multiple instances of the DsButton widget to enhance touch responsiveness and user experience.
+
 ## 0.0.52 (2026-09-29)
 
 * feat: enhance DsButton with rounded corners and text overflow handling (#54)
