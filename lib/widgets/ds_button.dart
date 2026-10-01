@@ -50,6 +50,7 @@ class DsButton extends StatelessWidget {
             disabledBackgroundColor: color.withValues(alpha: 0.4),
             disabledForegroundColor: DSColors.onPrimary.withValues(alpha: 0.7),
             shape: _shape,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           child: child,
         );
@@ -63,6 +64,7 @@ class DsButton extends StatelessWidget {
               color: isEnable ? color : color.withValues(alpha: 0.4),
             ),
             shape: _shape,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           child: child,
         );
@@ -73,6 +75,7 @@ class DsButton extends StatelessWidget {
             foregroundColor: color,
             disabledForegroundColor: color.withValues(alpha: 0.4),
             shape: _shape,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           child: child,
         );
