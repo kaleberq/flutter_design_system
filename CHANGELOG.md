@@ -1,3 +1,10 @@
+## 0.0.54 (2026-10-29)
+
+* feat: add DSDualViewSlideSwitcher widget with direction and position … (#56)
+
+* …enums
+* Introduced the DSDualViewSlideSwitcher widget, allowing for animated transitions between two child widgets based on specified direction (horizontal or vertical) and position (first or second). Added enums for direction and switcher position to enhance usability and flexibility.
+
 ## 0.0.53 (2026-10-01)
 
 * feat: update DsButton tap target size for improved usability (#55)
