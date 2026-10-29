@@ -1,0 +1,4 @@
+enum DSSwitcherPositionEnum {
+  first,
+  second;
+}

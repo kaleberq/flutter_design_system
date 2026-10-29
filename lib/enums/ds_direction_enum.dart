@@ -1,0 +1,4 @@
+enum DSDirectionEnum {
+  vertical,
+  horizontal;
+}
