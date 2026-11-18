@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_design_system/enums/ds_direction_enum.dart';
 import 'package:flutter_design_system/enums/ds_switcher_position_enum.dart';
 

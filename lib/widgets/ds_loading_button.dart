@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_design_system/enums/ds_button_type.dart';
 import 'package:flutter_design_system/enums/ds_loading_button_icon_position.dart';
 import 'package:flutter_design_system/tokens/ds_colors.dart';

@@ -4,13 +4,14 @@ version: 0.0.54
 homepage:
 
 environment:
-  sdk: ^3.9.2
-  flutter: ">=1.17.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^7.0.0
+  material_ui: ^1.11.1
   intl: ^0.20.2
   shimmer: ^3.0.0
   table_calendar: ^3.2.1

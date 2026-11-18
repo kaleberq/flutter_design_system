@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_design_system/themes/ds_theme.dart';
 import 'package:flutter_design_system/widgets/ds_table_calendar.dart';
 import 'package:flutter_test/flutter_test.dart';
