@@ -1,3 +1,10 @@
+## 0.0.55 (2026-11-18)
+
+* fix: update Flutter and Dart SDK versions, replace material package… (#57)
+
+* … references with material_ui
+* Updated the Dart SDK version to ^3.13.0 and Flutter version to >=3.47.0 in pubspec.yaml. Replaced all instances of 'package:flutter/material.dart' with 'package:material_ui/material_ui.dart' across multiple files to align with the new design system. Added material_ui dependency to enhance UI components.
+
 ## 0.0.54 (2026-10-29)
 
 * feat: add DSDualViewSlideSwitcher widget with direction and position … (#56)
